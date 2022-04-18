@@ -55,8 +55,15 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
-  console.log(clicked);
+
   if (!clicked) return;
   tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  tabsContent.forEach(con =>
+    con.classList.remove('operations__content--active')
+  );
   clicked.classList.add('operations__tab--active');
+
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 });
