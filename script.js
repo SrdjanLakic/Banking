@@ -68,17 +68,17 @@ tabsContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 
-const handleMouseHover = function (e, opacity) {
+const handleMouseHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
     siblings.forEach(s => {
       if (s !== link) {
-        s.style.opacity = opacity;
+        s.style.opacity = this;
       }
     });
-    logo.style.opacity = opacity;
+    logo.style.opacity = this;
   }
 };
 
