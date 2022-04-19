@@ -119,3 +119,18 @@ allSections.forEach(sec => {
   sectionObserver.observe(sec);
   sec.classList.add('section--hidden');
 });
+
+const imgTarget = document.querySelectorAll('img[data-src');
+
+const loadImage = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) return;
+  entry.target.src = entry.target.dataset.src;
+};
+const imgObserver = new IntersectionObserver(loadImage, {
+  root: null,
+  threshold: 0,
+});
+
+imgTarget.forEach(img => imgObserver.observe(img));
