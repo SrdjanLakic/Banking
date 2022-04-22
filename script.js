@@ -117,7 +117,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSections.forEach(sec => {
   sectionObserver.observe(sec);
-  // sec.classList.add('section--hidden');
+  sec.classList.add('section--hidden');
 });
 
 const imgTarget = document.querySelectorAll('img[data-src');
@@ -152,8 +152,6 @@ const goToSlide = function (slide) {
   );
 };
 
-goToSlide(0);
-
 const createDots = function () {
   slides.forEach(function (_, i) {
     dotContainer.insertAdjacentHTML(
@@ -162,7 +160,6 @@ const createDots = function () {
     );
   });
 };
-createDots();
 
 const nextSlide = function () {
   if (curSlide === maxSlide - 1) {
@@ -191,11 +188,16 @@ const prevSlide = function () {
   activateDot(curSlide);
 };
 
+const init = function () {
+  goToSlide(0);
+  createDots();
+  activateDot(0);
+};
+init();
 btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click', prevSlide);
 
 document.addEventListener('keydown', function (e) {
-  console.log(e);
   if (e.key === 'ArrowLeft') prevSlide();
   if (e.key === 'ArrowRight') nextSlide();
 });
